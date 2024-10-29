@@ -43,6 +43,13 @@ def api_info(latitude, longitude):
 
     return cidade, timezone, nascer_sol_convertido, por_sol_convertido, temperatura_convertida, umidade, ultravioleta, nuvens, visibilidade, velocidade_vento, tempo
 
+def gera_relatorio(latitude, longitude):
+    URL = f'https://api.openweathermap.org/data/3.0/onecall/overview?lat={latitude}&lon={longitude}&appid={API_KEY}'
+    data = requests.get(URL)
+    json = data.json()
+
+    relatorio = json['weather_overview']
+    return relatorio
 
 
 

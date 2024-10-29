@@ -1,4 +1,4 @@
-from scripts.api_data import api_info
+from scripts.api_data import api_info, gera_relatorio
 import geocoder
 
 g = geocoder.ip('me')
@@ -23,5 +23,18 @@ Nuvens: {nuvens}
 Visibilidade: {visibilidade}
 Velocidade do vento: {velocidade_vento}
 ''')
+
+escolha = str(input('\nDeseja ver um relatorio sobre as condições? (S/N)'))
+
+match escolha.lower():
+    case 's':
+        print(f'\nRelatório: {gera_relatorio(latitude, longitude)}')
+    case 'n':
+        print('Tudo bem então, obrigado por nos consultar!')
+    case _:
+        print('Opção invalida...')
+        
+
+
 
 
